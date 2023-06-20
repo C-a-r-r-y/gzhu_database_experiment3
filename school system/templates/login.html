@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>数据库实验</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+	<h2>数据库实验-学校管理系统</h2>
+	<form action="/login" method="post">
+        <label for="login-method">登录选项：</label>
+		<select id="login-method" name="login-method">
+		  <option value="student">学生登录</option>
+		  <option value="teacher">教师登录</option>
+		  <option value="admin">管理员登录</option>
+		</select><br><br>
+
+		<label for="account">账号：</label>
+		<input type="text" id="account" name="account"><br><br>
+
+		<label for="password">密码：</label>
+		<input type="password" id="password" name="password"><br><br>
+
+		<input type="submit" value="登录">
+	  </form>
+
+</body>
+</html>

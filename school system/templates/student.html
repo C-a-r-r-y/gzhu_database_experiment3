@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+	<title>学生系统</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+	<h2>数据库实验-学生系统</h2>
+    <br>
+    <h3>个人信息修改</h3>
+        <form action="" method="post">
+            <input type="hidden" name="type" value="changeinfo">
+            <label for="name">姓名：</label>
+            <input type="text" id="name" name="name" value="{{ username }}"><br>
+
+            {% if usergender == '男' %}
+                <input type="radio" name="gender" value="男" checked>男
+            {% else %}
+                <input type="radio" name="gender" value="男">男
+            {% endif %}
+
+            {% if usergender == '女' %}
+                <input type="radio" name="gender" value="女" checked>女
+            {% else %}
+                <input type="radio" name="gender" value="女">女
+            {% endif %}
+
+            <label for="age" >年龄：</label>
+            <input type="number" id="age" name="age" value="{{ userage }}"><br>
+
+            <label for="password">密码：</label>
+            <input type="password" id="password" name="password"><br>
+
+            <input type="submit" value="提交修改">
+        </form>
+    <br>
+
+    <h3>选课信息</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>课程号</th>
+                <th>课程名</th>
+                <th>科任老师编号</th>
+                <th>学分</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in usercourse %}
+                <tr>
+                    <th>{{ i[1].cno }}</th>
+                    <th>{{ i[1].cname }}</th>
+                    <th>{{ i[1].tno }}</th>
+                    <th>{{ i[1].ccredit }}</th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div>合计学分：{{ totalcredit }}</div>
+    <br>
+
+    <h3>选课</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>课程号</th>
+                <th>课程名</th>
+                <th>科任老师编号</th>
+                <th>学分</th>
+                <th>选择</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in selectablecourse %}
+                <tr>
+                    <th>{{ i.cno }}</th>
+                    <th>{{ i.cname }}</th>
+                    <th>{{ i.tno }}</th>
+                    <th>{{ i.ccredit }}</th>
+                    <th>
+                        <form action="" method="POST">
+                            <input type="hidden" name="type" value="courseselection">
+                            <input type="hidden" name="course" value="{{ i.cno }}">
+                            <input type="submit" value="选课">
+                        </form>
+                    </th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+</body>
+</html>

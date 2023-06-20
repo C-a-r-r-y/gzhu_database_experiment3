@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员系统</title>
+</head>
+<body>
+	<h2>数据库实验-管理员系统</h2>
+    <br>
+    <h3>学生信息修改</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>密码</th>
+                <th>总学分</th>
+                <th>提交修改</th>
+                <th>删除学生</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in studentlist %}
+                <tr>
+                    <form action="" method="post">
+                    <th>
+                        {{ i[0].sno }}<input name="sno" type="hidden" value="{{ i[0].sno }}">
+                    </th>
+                    <th>
+                        <input name="sname" type="text" value="{{ i[0].sname }}">
+                    </th>
+                    <th>
+                        {% if i[0].ssex == '男' %}
+                        <select name="ssex">
+                            <option value="男" selected>男</option>
+                            <option value="女">女</option>
+                        </select>
+                        {% else %}
+                        <select name="ssex">
+                            <option value="男">男</option>
+                            <option value="女" selected>女</option>
+                        </select>
+                       {% endif %}
+                    </th>
+                    <th>
+                        <input name="sage" type="text" value="{{ i[0].sage }}">
+                    </th>
+                    <th>
+                        <input name="pwd" type="text" value="{{ i[0].pwd }}">
+                    </th>
+                    <th>
+                        {{ i[1] }}
+                    </th>
+                    <th>
+                        <button type="submit" name="type" value="changestudent">提交修改</button>
+                    </th>
+                    <th>
+                        <button type="submit" name="type" value="deletestudent">删除学生</button>
+                    </th>
+                    </form>
+                </tr>
+            {% endfor %}
+            <tr>
+                    <form action="" method="post">
+                    <input name="type" type="hidden" value="addstudent">
+                    <th>
+                        <input name="sno" type="text">
+                    </th>
+                    <th>
+                        <input name="sname" type="text">
+                    </th>
+                    <th>
+                        <select name="ssex">
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select>
+                    </th>
+                    <th>
+                        <input name="sage" type="text">
+                    </th>
+                    <th>
+                        <input name="pwd" type="text">
+                    </th>
+                    <th>
+                        <button type="submit">添加学生</button>
+                    </th>
+                    </form>
+                </tr>
+        </tbody>
+    </table>
+    <br>
+
+    <h3>教师信息修改</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>教师号</th>
+                <th>姓名</th>
+                <th>职称</th>
+                <th>工资</th>
+                <th>密码</th>
+                <th>提交修改</th>
+                <th>删除教师</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in teacherlist %}
+                <tr>
+                    <form action="" method="post">
+                    <th>
+                        {{ i.tno }}<input name="tno" type="hidden" value="{{ i.tno }}">
+                    </th>
+                    <th>
+                        <input name="tname" type="text" value="{{ i.tname }}">
+                    </th>
+                    <th>
+                        <input name="tposition" type="text" value="{{ i.tposition }}">
+                    </th>
+                    <th>
+                        <input name="tsalary" type="text" value="{{ i.tsalary }}">
+                    </th>
+                    <th>
+                        <input name="pwd" type="text" value="{{ i.pwd }}">
+                    </th>
+                    <th>
+                        <button type="submit" name="type" value="changeteacher">提交修改</button>
+                    </th>
+                    <th>
+                        <button type="submit" name="type" value="deleteteacher">删除教师</button>
+                    </th>
+                    </form>
+                </tr>
+            {% endfor %}
+            <tr>
+                    <form action="" method="post">
+                    <input name="type" type="hidden" value="addteacher">
+                    <th>
+                        <input name="tno" type="text">
+                    </th>
+                    <th>
+                        <input name="tname" type="text">
+                    </th>
+                    <th>
+                        <input name="tposition" type="text">
+                    </th>
+                    <th>
+                        <input name="tsalary" type="text">
+                    </th>
+                    <th>
+                        <input name="pwd" type="text">
+                    </th>
+                    <th>
+                        <button type="submit">添加教师</button>
+                    </th>
+                    </form>
+                </tr>
+        </tbody>
+    </table>
+    <br>
+
+    <h3>教师信息统计</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>职称</th>
+                <th>平均工资</th>
+                <th>人数</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in salary %}
+                <tr>
+                    <th>
+                        {{ i[0] }}
+                    </th>
+                    <th>
+                        {{ i[1] }}
+                    </th>
+                    <th>
+                        {{ i[2] }}
+                    </th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+
+    <h3>课程信息统计</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>课程号</th>
+                <th>课程名</th>
+                <th>最高成绩</th>
+                <th>最低成绩</th>
+                <th>平均成绩</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in courselist %}
+                <tr>
+                    <th>{{i[0].cno}}</th>
+                    <th>{{ i[0].cname }}</th>
+                    <th>{{i[1]}}</th>
+                    <th>{{i[2]}}</th>
+                    <th>{{i[3]}}</th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>a
+    <br>
+
+    <h3>选课及成绩统计</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>课程号</th>
+                <th>学生号</th>
+                <th>成绩</th>
+                <th>修改</th>
+                <th>删除</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i in sclist %}
+            <tr>
+                <form action="" method="post">
+                <th>
+                    <input name="cno" type="hidden" value="{{ i.cno }}">{{ i.cno }}
+                </th>
+                <th>
+                    <input name="sno" type="hidden" value="{{ i.sno }}">{{ i.sno }}
+                </th>
+                <th>
+                    <input name="grade" type="text" value="{{ i.grade }}">
+                </th>
+                <th>
+                    <button type="submit" name="type" value="changesc">提交修改</button>
+                </th>
+                <th>
+                    <button type="submit" name="type" value="deletesc">删除选课</button>
+                </th>
+                </form>
+            </tr>
+        {% endfor %}
+            <tr>
+                <form action="" method="post">
+                    <input name="type" type="hidden" value="addsc">
+                    <th>
+                        <input name="cno" type="text">
+                    </th>
+                    <th>
+                        <input name="sno" type="text">
+                    </th>
+                    <th>
+                        <input name="grade" type="text">
+                    </th>
+                    <th>
+                        <button type="submit">添加信息</button>
+                    </th>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
