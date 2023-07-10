@@ -1,4 +1,4 @@
-# gzhu_database_experiment3
+# 广州大学数据库原理课实验3
 ## 简介
 广州大学数据库原理课实验3的内容，使用模板引擎,flask框架和SQLAlchemy实现，可以拿来应付老师，网上有用C#实现的，mfc实现的，但我没有看到用python web实现的，我要添砖加瓦
 ## 实验要求（word文档复制）
