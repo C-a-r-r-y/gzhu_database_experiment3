@@ -1,1 +1,3 @@
 # gzhu_database_experiment3
+
+广州大学数据库原理课实验3的内容，使用flask框架和orm实现，可以拿来应付老师
